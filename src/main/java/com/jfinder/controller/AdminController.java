@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/admin")
 public class AdminController {
 
   @Autowired
@@ -22,9 +22,8 @@ public class AdminController {
     return "redirect:/";
   }
 
-  @RequestMapping(value = "/hehe", method = RequestMethod.GET)
-
+/*  @RequestMapping(value = "hehe", method = RequestMethod.GET)
   public void hehe() {
     adminService.getAll();
-  }
+  }*/
 }

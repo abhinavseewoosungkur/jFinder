@@ -7,7 +7,7 @@
 <h2>Hello World!</h2>
 
 <h1>Add New</h1>
-<form method="post" action="addAdmin">
+<form method="post" action="/admin/addAdmin">
     Admin name: <input type="text" name="name"/>   <br>
     Admin password: <input type="text" name="password"/>
     <button>Add</button>
