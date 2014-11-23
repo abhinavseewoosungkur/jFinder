@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 @Service
 public class ItemService {
@@ -22,6 +23,20 @@ public class ItemService {
         itemList =
         em.createQuery("SELECT item FROM Item item", Item.class)
             .getResultList();
+    return itemList;
+  }
+
+  @Transactional
+  public List<Item> getItemByDescription(String description) {
+
+    List<Item>
+        itemList =
+        em.createQuery("SELECT item FROM Item item "
+                       + "WHERE item.description LIKE :description",
+                       Item.class)
+            .setParameter("description", "%" + description + "%")
+            .getResultList();
+
     return itemList;
   }
 

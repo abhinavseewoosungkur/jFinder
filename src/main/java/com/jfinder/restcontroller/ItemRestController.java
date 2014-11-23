@@ -22,5 +22,10 @@ public class ItemRestController {
     return itemService.getAll();
   }
 
+  @RequestMapping(value = "getBy", params = "description")
+  public @ResponseBody List<Item> getItemsByDescription(String description) {
+    return itemService.getItemByDescription(description);
+  }
+
 }
 

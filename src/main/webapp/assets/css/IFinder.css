@@ -1,0 +1,167 @@
+.second{
+    min-height: 250px;
+}
+
+.itemlog{
+    min-height: 500px;
+    width: 380px;
+    
+}
+
+.itemlog2{
+    min-height: 300px;
+    width: 380px;
+    padding-right: 5px;
+    
+}
+
+.mydifined{
+    width: 40.333333%;
+}
+
+.form-control{
+    background-color: transparent;
+}
+
+#newSpec button{
+   background-color: red; 
+}
+
+#parag{
+    color: white;
+}
+
+#text a{
+    color: white;
+    font-size: 30px;
+}
+
+.myInnerRow{
+    padding-bottom: 30px
+}
+
+#info2 td{
+    background-color: transparent;
+}
+
+#help {
+    color:#fff;
+   
+      background: #000;
+padding: 0;
+-webkit-background-size: cover;
+background-size: cover;
+}
+
+#about {
+    color:#fff;   
+      background: #000;
+      padding-top: 60px;
+
+-webkit-background-size: cover;
+background-size: cover;
+}
+
+#theSearch{
+        padding-top: 5px;
+    }
+    
+    
+#about .overlay {
+              background:rgba(32, 32, 32, 0.3); 
+                padding-top: 30px;           
+    }
+    
+    
+    #searchInput{
+        display: inline;
+        width: 80%;
+    }
+    
+    
+    .adminSrch{
+        min-height: 45px;
+       
+        
+    }
+    
+    
+    #adminline {
+        padding-top: 0px;
+        padding-bottom: 40px;
+    }
+    
+    #fordropnav{
+        background-color: #242222;
+        color: fff;
+    }
+    
+    #ddrop{
+        background-color: #242222;
+    }
+    
+    #ddrop li a{
+        color: #fff;
+    }
+    
+    #text a{
+        font-family: fantasy;
+        color: aquamarine;
+    }
+    
+    
+    .modContent{
+        background-color: black;
+    }
+    
+    .cls{
+        color: red;
+    }
+    #inputDescription{
+        margin-bottom: 15px;
+    }
+    
+    
+    .suggwdi{
+        width: 40%;
+        padding-top: 45px;
+    }
+    
+    
+    #add_item_form small{
+        font-size: 12px;
+        color: red;
+        float: left;
+        //padd-left: 20;  
+    }
+    
+    .form-control{
+        color: white;
+    }
+    
+    #add_item_form p {
+        margin-bottom: 0%;
+        //padding-left: 26%;
+    }
+    
+    #mSubmit{
+        margin-top: 10px;
+    }
+    
+
+    #add_item_form1 small{
+        font-size: 12px;
+        color: red;        
+    }
+    
+    #add_item_form1 p {
+        margin-bottom: 0%;
+        padding-left: 26%;
+    }
+    
+    #administratorportalid{
+        margin-top: 26px;
+    }
+    
+    
+    
