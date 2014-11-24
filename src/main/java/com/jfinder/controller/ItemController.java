@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -21,7 +20,7 @@ public class ItemController {
 
   @RequestMapping(value = "add", method = RequestMethod.POST)
   public String addItem(@ModelAttribute Item item) {
-    item.setDatefound(new Date());
+    //item.setDatefound(new Date());
     itemService.add(item);
     return "redirect:/";
   }

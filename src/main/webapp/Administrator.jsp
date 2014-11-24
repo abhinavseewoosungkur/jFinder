@@ -218,46 +218,6 @@
                                 <input type="hidden" name="finderid"
                                        value="finderid" id="idfinderid">
 
-
-                                <div class="form-group">
-                                    <label class="col-lg-3 col-md-3 col-sm-3 control-label"
-                                           for="idhumberid">Humber ID</label>
-
-                                    <div class="col-lg-9 col-md-9 col-sm-9">
-                                        <input type="text"
-                                               name="humberid"
-                                               class="form-control"
-                                               required="required"
-                                               placeholder="Humber ID"
-                                               id="idhumberid">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-lg-3 col-md-3 col-sm-3 control-label"
-                                           for="idname">Name</label>
-
-                                    <div class="col-lg-9 col-md-9 col-sm-9">
-                                        <input type="text"
-                                               name="name"
-                                               class="form-control"
-                                               required="required"
-                                               placeholder="Name" id="idname">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-lg-3 col-md-3 col-sm-3 control-label"
-                                           for="idEmailAddress">Email
-                                        Address</label>
-
-                                    <div class="col-lg-9 col-md-9 col-sm-9">
-                                        <input type="text"
-                                               name="emailaddress"
-                                               class="form-control"
-                                               required="required"
-                                               placeholder="Email Address"
-                                               id="idEmailAddress">
-                                    </div>
-                                </div>
                                 <div class="form-group">
                                     <label class="col-lg-3 col-md-3 col-sm-3 control-label"
                                            for="idDescription">Item
@@ -315,6 +275,78 @@
 
 
                         </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="add_new_user_modal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content modContent">
+                        <div class="modal-header">
+                            <button class="close cls" data-dismiss="modal"
+                                    onclick="modalWindowSlideOut()">&times;</button>
+                            <h4 class="modal-title">Add New User</h4>
+
+                        </div>
+                        <div class="modal-body" >
+                            <form class="form-horizontal"
+                                  action="/user/add" method="post"
+                                  >
+                                <div class="form-group">
+                                    <label class="col-lg-3 col-md-3 col-sm-3 control-label"
+                                           for="idhumberid">Humber ID</label>
+
+                                    <div class="col-lg-9 col-md-9 col-sm-9">
+                                        <input type="text"
+                                               name="humberid"
+                                               class="form-control"
+                                               required="required"
+                                               placeholder="Humber ID"
+                                               id="idhumberid">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 col-md-3 col-sm-3 control-label"
+                                           for="idname">Name</label>
+
+                                    <div class="col-lg-9 col-md-9 col-sm-9">
+                                        <input type="text"
+                                               name="name"
+                                               class="form-control"
+                                               required="required"
+                                               placeholder="Name" id="idname">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-3 col-md-3 col-sm-3 control-label"
+                                           for="idEmailAddress">Email
+                                        Address</label>
+
+                                    <div class="col-lg-9 col-md-9 col-sm-9">
+                                        <input type="text"
+                                               name="email"
+                                               class="form-control"
+                                               required="required"
+                                               placeholder="Email Address"
+                                               id="idEmailAddress">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-danger" data-dismiss="modal"
+                                            type="button"
+                                            onclick="modalWindowSlideOut()">Cancel
+                                    </button>
+                                    <button class="btn btn-success pull-right" type="submit" id="save_user">Save
+                                    </button>
+                                    <!--                <p><small class="text-muted"> Click out of this window or use the cancel button to close this window</small></p>-->
+
+
+                                </div>
+                            </form>
+
+                        </div>
+
 
                     </div>
                 </div>
@@ -410,10 +442,12 @@
                        data-toggle="modal" id="modalWindowItemForm">Add new
                         Item</a>
                 </div>
+                <div class="form-group col-lg-2 col-md-2 col-sm-2 wow bounceInDown animated">
+                    <a href="#add_new_user_modal" class="btn btn-success btn-block btn-sm"
+                       data-toggle="modal" id="addNewUserModal">Add new
+                        User</a>
+                </div>
             </div>
-
-
-            <?php $_SESSION['pagepath'] = $_SERVER['PHP_SELF'];?>
 
         </div>
     </div>
