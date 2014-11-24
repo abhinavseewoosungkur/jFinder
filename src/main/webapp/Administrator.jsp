@@ -5,6 +5,7 @@
   Time: 9:24 PM
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -207,8 +208,7 @@
 
                         </div>
                         <div class="modal-body" id="modaldiv">
-                            <form class="form-horizontal"
-                                  action="ItemController.php" method="post"
+                            <form:form class="form-horizontal" modelAttribute="administratorSession" method="post"
                                   id="add_item_form1">
                                 <input type="hidden" name="action"
                                        value="add_item_from_admin"
@@ -246,6 +246,10 @@
                                     </div>
                                 </div>
 
+                                <form:select path="finder" cssStyle="background: #000000">
+                                    <form:options items="${userList}" itemValue="iduser" itemLabel="name"/>
+                                </form:select>
+
                                 <div class="form-group">
                                     <label class="col-lg-3 col-md-3 col-sm-3 control-label"
                                            for="idDateFound">Date</label>
@@ -263,7 +267,7 @@
                                     </div>
                                 </div>
 
-                            </form>
+                            </form:form>
 
                         </div>
                         <div class="modal-footer">
