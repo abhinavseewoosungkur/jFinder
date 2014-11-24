@@ -3,8 +3,11 @@ package com.jfinder.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +24,14 @@ public class Item {
   private String description;
   private String location;
   private Date datefound;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "finderid", referencedColumnName = "iduser")
+  private User finder;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn(name = "ownerid", referencedColumnName = "iduser")
+  private User owner;
 
 
   public int getIditem() {
@@ -63,4 +74,19 @@ public class Item {
     this.datefound = datefound;
   }
 
+  public User getFinder() {
+    return finder;
+  }
+
+  public void setFinder(User finder) {
+    this.finder = finder;
+  }
+
+  public User getOwner() {
+    return owner;
+  }
+
+  public void setOwner(User owner) {
+    this.owner = owner;
+  }
 }

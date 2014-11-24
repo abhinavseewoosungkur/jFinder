@@ -33,7 +33,7 @@
     <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
         <property name="persistenceUnitName" value="persistenceUnit"/>
         <property name="dataSource" ref="dataSource"/>
-        <property name="persistenceXmlLocation" value="persistence.xml" />
+        <property name="persistenceXmlLocation" value="/WEB-INF/persistence.xml" />
     </bean>
 
     <!-- Transaction Manager -->
