@@ -27,7 +27,10 @@ public class User {
   private String email;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "finder")
-  private List<Item> items;
+  private List<Item> finderItems;
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
+  private List<Item> ownerItems;
 
   public String getHumberid() {
     return humberid;
@@ -59,5 +62,21 @@ public class User {
 
   public void setIduser(int iduser) {
     this.iduser = iduser;
+  }
+
+  public List<Item> getFinderItems() {
+    return finderItems;
+  }
+
+  public void setFinderItems(List<Item> finderItems) {
+    this.finderItems = finderItems;
+  }
+
+  public List<Item> getOwnerItems() {
+    return ownerItems;
+  }
+
+  public void setOwnerItems(List<Item> ownerItems) {
+    this.ownerItems = ownerItems;
   }
 }

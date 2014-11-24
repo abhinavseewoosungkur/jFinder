@@ -261,11 +261,12 @@
                                                required="required"
                                                placeholder="Time Stamp"
                                                id="idDateFound">
-                                        <button class="btn btn-success pull-right"
-                                                type="submit" id="mSubmit">Save
-                                        </button>
+
                                     </div>
                                 </div>
+                                <button class="btn btn-success pull-right"
+                                        type="submit" id="mSubmit">Save
+                                </button>
 
                             </form:form>
 

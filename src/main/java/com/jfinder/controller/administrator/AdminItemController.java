@@ -42,7 +42,7 @@ public class AdminItemController {
   public String submitForm(@ModelAttribute("administratorSession") Item item,
                            BindingResult bindingResult, SessionStatus sessionStatus){
     itemService.add(item);
-    return "../Administrator";
+    return "redirect:Administrator";
   }
 
   @ModelAttribute("userList")
