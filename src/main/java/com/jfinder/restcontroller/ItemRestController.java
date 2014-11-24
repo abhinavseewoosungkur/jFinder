@@ -27,6 +27,11 @@ public class ItemRestController {
     return itemService.getItemByDescription(description);
   }
 
+  @RequestMapping(value = "getBy", params = "searchBox")
+  public @ResponseBody List<Item> getItemsByDescriptionSearchBox(String searchBox) {
+    return itemService.getItemByDescription(searchBox);
+  }
+
   @RequestMapping(value = "getBy", params = "location")
   public @ResponseBody List<Item> getItemsByLocation(String location) {
     return itemService.getItemsByLocation(location);

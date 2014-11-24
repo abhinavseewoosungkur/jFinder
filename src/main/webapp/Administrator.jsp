@@ -97,37 +97,43 @@
                     console.log(inputName);
                     var inputValue = $('[name=' + inputName
                                        + ']').filter('input').val();
+                    console.log("/rest/item/getBy?" + inputName + "=" + inputValue);
                     if (inputValue.length == 0) {
                         $("#info2").empty();
                         $('#administratorportalid').slideDown();
                     } else {
-                        $.getJSON("api/item.php?" + inputName + "="
+                        $.getJSON("/rest/item/getBy?" + inputName + "="
                                   + inputValue,
                                   function (Data) {
                                       $("#info2").empty();
                                       $.each(Data, function (key, val) {
-                                          var name;
-                                          for (var prop in val) {
-                                              name = prop;
+                                          if(val.finder == null) {
+                                              var finderName = '';
+                                          } else {
+                                              var finderName = val.finder.name;
+                                          }
+                                          if(val.owner == null) {
+                                              var ownerName = '';
+                                          } else {
+                                              var ownerName = val.owner.name;
                                           }
                                           $('<tr class="info">' + '<td>' +
                                             '<div id="itemid">' +
-                                            val[name].iditem + '</div></td>' +
-                                            '<td>' + name + '</td>' +
-                                            '<td>' + val[name].description
-                                            + '</td>' +
-                                            '<td>' + val[name].datefound
-                                            + '</td>' +
+                                            val.iditem + '</div></td>' +
+                                            '<td>' + finderName + '</td>' +
+                                            '<td>' + ownerName + '</td>' +
+                                            '<td>' + val.description + '</td>' +
+                                            '<td>' + val.datefound + '</td>' +
                                             '<td><a href="#" class="btn btn-success btn-sm" name="update_button" value="update" onclick="fillModal('
-                                            + val[name].iditem
+                                            + val.iditem
                                             + ');"><div id="updateButtonText'
-                                            + val[name].iditem
+                                            + val.iditem
                                             + '">Update</div></a>&nbsp;&nbsp;' +
                                             '<a href="#" class="btn btn-danger btn-sm" name="delete_button" value="delete" onclick="deleteRow('
-                                            + val[name].iditem
+                                            + val.iditem
                                             + ');">Delete</a>&nbsp;&nbsp;' +
                                             '<a href="#" class="btn btn-info btn-sm" name="assignowner_button" value="assignowner" onclick="setOwner('
-                                            + val[name].iditem
+                                            + val.iditem
                                             + ');">Assign Owner</a>' +
                                             '</td></tr>'
                                           ).appendTo("#info2");
@@ -358,7 +364,7 @@
 
                             <input type="text" class="form-control"
                                    placeholder="Search" id="searchInput"
-                                   name="description"
+                                   name="searchBox"
                                    onkeyup="filterResult(this.name)">
                             <button type="submit" class="btn btn-default"
                                     name="search_item"><span
@@ -383,23 +389,15 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Finder's Name</th>
+                            <th>Finder</th>
+                            <th>Owner</th>
                             <th>Description</th>
                             <th>Date</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody id="info2">
-                        <!--                <tr>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td><a href="#" class="btn btn-success btn-sm" name="update_button" value="update">Update</a>
-                                            &nbsp;&nbsp;&nbsp; <a href="#" class="btn btn-danger btn-sm" name="delete_button" value="delete">Delete</a></td>
-                                        </tr>-->
-
+                        <!-- filled by JS -->
                         </tbody>
                     </table>
                 </div>
