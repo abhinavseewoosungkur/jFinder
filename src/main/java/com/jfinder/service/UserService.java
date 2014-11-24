@@ -27,4 +27,9 @@ public class UserService {
     return users;
   }
 
+  @Transactional
+  public User getUser(String userId) {
+    return (User) em.createQuery("SELECT user FROM User user where user.iduser = :userId")
+        .setParameter("userId", Integer.parseInt(userId)).getSingleResult();
+  }
 }

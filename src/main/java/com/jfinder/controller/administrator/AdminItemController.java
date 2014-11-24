@@ -39,8 +39,9 @@ public class AdminItemController {
   }
 
   @RequestMapping(method = RequestMethod.POST)
-  public String submitForm(@ModelAttribute("administratorSession") Item item,
-                           BindingResult bindingResult, SessionStatus sessionStatus){
+  public String submitForm(
+      @ModelAttribute("administratorSession") Item item,
+      BindingResult bindingResult, SessionStatus sessionStatus) {
     itemService.add(item);
     return "redirect:Administrator";
   }

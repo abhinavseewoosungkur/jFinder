@@ -9,7 +9,16 @@
 
 
 <!-- Enable annotation-based Spring MVC controllers (eg: @Controller annotation) -->
-    <mvc:annotation-driven/>
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="formatters">
+            <set>
+                <ref bean="userFormatter"/>
+            </set>
+        </property>
+    </bean>
+
+    <mvc:annotation-driven conversion-service="conversionService" />
+
     <!--<mvc:resources mapping="/assets/**" location="/assets" />-->
 
     <!-- Classpath scanning of @Component, @Service, etc annotated class -->
