@@ -13,6 +13,7 @@
         <property name="formatters">
             <set>
                 <ref bean="userFormatter"/>
+                <ref bean="dateFormatter" />
             </set>
         </property>
     </bean>
