@@ -94,6 +94,7 @@
 
             <script src="assets/js/jquery-1.10.2.js"></script>
             <script type="text/javascript">
+
                 var filterResult = function (inputName) {
                     console.log(inputName);
                     var inputValue = $('[name=' + inputName
@@ -150,31 +151,40 @@
                     $('#updateButtonText' + row).text("Loading ...");
                     $.getJSON("/rest/item/getBy?itemfinderbyid=" + row,
                               function (Data) {
-                                  var year = new Date(Data.datefound).getFullYear();
-                                  var month = new Date(Data.datefound).getMonth();
-                                  month = month + '';
-
-                                  if(month.length == 1) {
-                                      console.log('length is one');
-                                      month = '0' + month;
-                                  }
-                                  console.log('month=' + month);
-                                  var day = new Date(Data.datefound).getDate();
-                                  day = day + '';
-                                  console.log('day=' + day);
-                                  if(day.length == 1) {
-                                      day = '0' + day;
-                                  }
                                   $('#iditem').val(row);
                                   $('#idDescription').val(Data.description);
                                   $('#idLocationFound').val(Data.location);
-                                  console.log(year + '-' + month + '-' + day);
-                                  $('#idDateFound').val(year + '-' + month + '-' + day);
+                                  $('#idDateFound').val(dateFormatter(Data.datefound));
                                   $('#idfinderid').val(Data.finderid);
 
                                   $('#modalWindowItemForm').trigger('click');
                                   $('#updateButtonText' + row).text("Update");
                               });
+                }
+
+                 /**
+                  * Formats the date in HTML5 date format - yyyy-mm-dd
+                  * @param date A date object
+                  * @returns {string}
+                  * */
+                var dateFormatter = function(date) {
+                    var year = new Date(date).getFullYear();
+                    var month = new Date(date).getMonth();
+                    month = month + '';
+
+                    if(month.length == 1) {
+                        console.log('length is one');
+                        month = '0' + month;
+                    }
+                    console.log('month=' + month);
+                    var day = new Date(date).getDate();
+                    day = day + '';
+                    console.log('day=' + day);
+                    if(day.length == 1) {
+                        day = '0' + day;
+                    }
+
+                    return year + '-' + month + '-' + day;
                 }
 
                 var clearModal = function () {
@@ -261,9 +271,37 @@
                                     </div>
                                 </div>
 
-                                <form:select path="finder" cssStyle="background: #000000">
-                                    <form:options items="${userList}" itemValue="iduser" itemLabel="name"/>
-                                </form:select>
+                                <div class="form-group">
+                                    <label class="col-lg-3 col-md-3 col-sm-3 control-label"
+                                           for="finderselect">Finder</label>
+
+                                    <div class="col-lg-9 col-md-9 col-sm-9">
+                                        <form:select path="finder"
+                                                     cssStyle="background: #000000"
+                                                     name="finderselect">
+                                            <form:option value="" label="-- Choose one--" />
+                                            <form:options items="${userList}"
+                                                          itemValue="iduser"
+                                                          itemLabel="name"/>
+                                        </form:select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-3 col-md-3 col-sm-3 control-label"
+                                           for="ownerselect">Owner</label>
+
+                                    <div class="col-lg-9 col-md-9 col-sm-9">
+                                        <form:select path="owner"
+                                                     cssStyle="background: #000000"
+                                                     name="ownerselect">
+                                            <form:option value="" label="-- Choose one--" />
+                                            <form:options items="${userList}"
+                                                          itemValue="iduser"
+                                                          itemLabel="name"/>
+                                        </form:select>
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label class="col-lg-3 col-md-3 col-sm-3 control-label"
