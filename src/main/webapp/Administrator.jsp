@@ -148,16 +148,28 @@
                 var fillModal = function (row) {
                     console.log('#updateButtonText' + row);
                     $('#updateButtonText' + row).text("Loading ...");
-                    $.getJSON("api/itemfinder.php?itemfinderbyid=" + row,
+                    $.getJSON("/rest/item/getBy?itemfinderbyid=" + row,
                               function (Data) {
+                                  var year = new Date(Data.datefound).getFullYear();
+                                  var month = new Date(Data.datefound).getMonth();
+                                  month = month + '';
 
+                                  if(month.length == 1) {
+                                      console.log('length is one');
+                                      month = '0' + month;
+                                  }
+                                  console.log('month=' + month);
+                                  var day = new Date(Data.datefound).getDate();
+                                  day = day + '';
+                                  console.log('day=' + day);
+                                  if(day.length == 1) {
+                                      day = '0' + day;
+                                  }
                                   $('#iditem').val(row);
-                                  $('#idhumberid').val(Data.humberid);
-                                  $('#idname').val(Data.name);
-                                  $('#idEmailAddress').val(Data.email);
                                   $('#idDescription').val(Data.description);
                                   $('#idLocationFound').val(Data.location);
-                                  $('#idDateFound').val(Data.datefound);
+                                  console.log(year + '-' + month + '-' + day);
+                                  $('#idDateFound').val(year + '-' + month + '-' + day);
                                   $('#idfinderid').val(Data.finderid);
 
                                   $('#modalWindowItemForm').trigger('click');
@@ -213,7 +225,7 @@
                                 <input type="hidden" name="action"
                                        value="add_item_from_admin"
                                        id="idaction">
-                                <input type="hidden" name="itemid"
+                                <input type="hidden" name="iditem"
                                        value="itemid" id="iditem">
                                 <input type="hidden" name="finderid"
                                        value="finderid" id="idfinderid">

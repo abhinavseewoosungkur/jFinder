@@ -42,5 +42,10 @@ public class ItemRestController {
     return itemService.getItemByDate(date);
   }
 
+  @RequestMapping(value = "getBy", params = "itemfinderbyid")
+  public @ResponseBody Item getItemById(String itemfinderbyid) {
+    return itemService.getItemById(itemfinderbyid);
+  }
+
 }
 
