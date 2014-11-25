@@ -5,6 +5,8 @@ import com.jfinder.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -19,4 +21,15 @@ public class UserService {
     em.persist(user);
   }
 
+  @Transactional
+  public List<User> getAll() {
+    List<User> users = em.createQuery("SELECT user FROM User user", User.class).getResultList();
+    return users;
+  }
+
+  @Transactional
+  public User getUser(String userId) {
+    return (User) em.createQuery("SELECT user FROM User user where user.iduser = :userId")
+        .setParameter("userId", Integer.parseInt(userId)).getSingleResult();
+  }
 }

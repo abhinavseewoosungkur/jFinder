@@ -45,7 +45,11 @@ public class ItemService {
 
   @Transactional
   public void add(Item item) {
-    em.persist(item);
+    if(item.getIditem() == 0) {
+      em.persist(item);
+    } else {
+      em.merge(item);
+    }
   }
 
   @Transactional
@@ -81,5 +85,21 @@ public class ItemService {
             .getResultList();
 
     return itemList;
+  }
+
+
+  @Transactional
+  public Item getItemById(String id) {
+    Item
+        item =
+        em.createQuery("SELECT item FROM Item item WHERE item.iditem = :id",
+                       Item.class).setParameter("id", Integer.parseInt(id))
+            .getSingleResult();
+    return item;
+  }
+
+  @Transactional
+  public int deleteItemById(String id) {
+    return em.createQuery("DELETE FROM Item item WHERE item.iditem = :id").setParameter("id", Integer.parseInt(id)).executeUpdate();
   }
 }

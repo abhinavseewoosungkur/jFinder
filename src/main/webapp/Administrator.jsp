@@ -5,6 +5,7 @@
   Time: 9:24 PM
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,7 +119,7 @@
                                               var ownerName = val.owner.name;
                                           }
                                           $('<tr class="info">' + '<td>' +
-                                            '<div id="itemid">' +
+                                            '<div id="itemid' + val.iditem + '">' +
                                             val.iditem + '</div></td>' +
                                             '<td>' + finderName + '</td>' +
                                             '<td>' + ownerName + '</td>' +
@@ -147,16 +148,28 @@
                 var fillModal = function (row) {
                     console.log('#updateButtonText' + row);
                     $('#updateButtonText' + row).text("Loading ...");
-                    $.getJSON("api/itemfinder.php?itemfinderbyid=" + row,
+                    $.getJSON("/rest/item/getBy?itemfinderbyid=" + row,
                               function (Data) {
+                                  var year = new Date(Data.datefound).getFullYear();
+                                  var month = new Date(Data.datefound).getMonth();
+                                  month = month + '';
 
+                                  if(month.length == 1) {
+                                      console.log('length is one');
+                                      month = '0' + month;
+                                  }
+                                  console.log('month=' + month);
+                                  var day = new Date(Data.datefound).getDate();
+                                  day = day + '';
+                                  console.log('day=' + day);
+                                  if(day.length == 1) {
+                                      day = '0' + day;
+                                  }
                                   $('#iditem').val(row);
-                                  $('#idhumberid').val(Data.humberid);
-                                  $('#idname').val(Data.name);
-                                  $('#idEmailAddress').val(Data.email);
                                   $('#idDescription').val(Data.description);
                                   $('#idLocationFound').val(Data.location);
-                                  $('#idDateFound').val(Data.datefound);
+                                  console.log(year + '-' + month + '-' + day);
+                                  $('#idDateFound').val(year + '-' + month + '-' + day);
                                   $('#idfinderid').val(Data.finderid);
 
                                   $('#modalWindowItemForm').trigger('click');
@@ -190,9 +203,12 @@
                 }
 
                 var deleteRow = function (row) {
-                    $.getJSON("api/item.php?delete=" + row,
+                    $.getJSON("/rest/item/delete?id=" + row,
                               function (Data) {
                                   console.log(Data);
+                                  if(Data == 1) {
+                                      $('#itemid'+row).parent().parent().empty();
+                                  }
                               });
                 }
             </script>
@@ -207,13 +223,12 @@
 
                         </div>
                         <div class="modal-body" id="modaldiv">
-                            <form class="form-horizontal"
-                                  action="ItemController.php" method="post"
+                            <form:form class="form-horizontal" modelAttribute="administratorSession" method="post"
                                   id="add_item_form1">
                                 <input type="hidden" name="action"
                                        value="add_item_from_admin"
                                        id="idaction">
-                                <input type="hidden" name="itemid"
+                                <input type="hidden" name="iditem"
                                        value="itemid" id="iditem">
                                 <input type="hidden" name="finderid"
                                        value="finderid" id="idfinderid">
@@ -246,6 +261,10 @@
                                     </div>
                                 </div>
 
+                                <form:select path="finder" cssStyle="background: #000000">
+                                    <form:options items="${userList}" itemValue="iduser" itemLabel="name"/>
+                                </form:select>
+
                                 <div class="form-group">
                                     <label class="col-lg-3 col-md-3 col-sm-3 control-label"
                                            for="idDateFound">Date</label>
@@ -257,13 +276,14 @@
                                                required="required"
                                                placeholder="Time Stamp"
                                                id="idDateFound">
-                                        <button class="btn btn-success pull-right"
-                                                type="submit" id="mSubmit">Save
-                                        </button>
+
                                     </div>
                                 </div>
+                                <button class="btn btn-success pull-right"
+                                        type="submit" id="mSubmit">Save
+                                </button>
 
-                            </form>
+                            </form:form>
 
                         </div>
                         <div class="modal-footer">
