@@ -97,4 +97,9 @@ public class ItemService {
             .getSingleResult();
     return item;
   }
+
+  @Transactional
+  public int deleteItemById(String id) {
+    return em.createQuery("DELETE FROM Item item WHERE item.iditem = :id").setParameter("id", Integer.parseInt(id)).executeUpdate();
+  }
 }

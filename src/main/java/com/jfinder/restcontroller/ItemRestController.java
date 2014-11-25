@@ -47,5 +47,12 @@ public class ItemRestController {
     return itemService.getItemById(itemfinderbyid);
   }
 
+  @RequestMapping(value = "delete", params = "id")
+  public @ResponseBody
+  int deleteItem(String id) {
+    int response = itemService.deleteItemById(id);
+    return response;
+  }
+
 }
 

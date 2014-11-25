@@ -119,7 +119,7 @@
                                               var ownerName = val.owner.name;
                                           }
                                           $('<tr class="info">' + '<td>' +
-                                            '<div id="itemid">' +
+                                            '<div id="itemid' + val.iditem + '">' +
                                             val.iditem + '</div></td>' +
                                             '<td>' + finderName + '</td>' +
                                             '<td>' + ownerName + '</td>' +
@@ -203,9 +203,12 @@
                 }
 
                 var deleteRow = function (row) {
-                    $.getJSON("api/item.php?delete=" + row,
+                    $.getJSON("/rest/item/delete?id=" + row,
                               function (Data) {
                                   console.log(Data);
+                                  if(Data == 1) {
+                                      $('#itemid'+row).parent().parent().empty();
+                                  }
                               });
                 }
             </script>
