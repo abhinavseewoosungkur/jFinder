@@ -4,13 +4,9 @@ package com.jfinder.model;
  * Created by Abhinav on 11/23/2014.
  */
 
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 ;
@@ -26,11 +22,11 @@ public class User {
   private String name;
   private String email;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "finder")
+/*  @OneToMany(fetch = FetchType.EAGER, mappedBy = "finder")
   private List<Item> finderItems;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
-  private List<Item> ownerItems;
+  @OneToMany(fetch = FetchType.EAGER, mappedBy = "owner")
+  private List<Item> ownerItems;*/
 
   public String getHumberid() {
     return humberid;
@@ -64,7 +60,7 @@ public class User {
     this.iduser = iduser;
   }
 
-  public List<Item> getFinderItems() {
+/*  public List<Item> getFinderItems() {
     return finderItems;
   }
 
@@ -78,5 +74,5 @@ public class User {
 
   public void setOwnerItems(List<Item> ownerItems) {
     this.ownerItems = ownerItems;
-  }
+  }*/
 }
