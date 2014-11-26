@@ -133,10 +133,7 @@
                                             + '">Update</div></a>&nbsp;&nbsp;' +
                                             '<a href="#" class="btn btn-danger btn-sm" name="delete_button" value="delete" onclick="deleteRow('
                                             + val.iditem
-                                            + ');">Delete</a>&nbsp;&nbsp;' +
-                                            '<a href="#" class="btn btn-info btn-sm" name="assignowner_button" value="assignowner" onclick="setOwner('
-                                            + val.iditem
-                                            + ');">Assign Owner</a>' +
+                                            + ');">Delete</a>' +
                                             '</td></tr>'
                                           ).appendTo("#info2");
                                           $('#administratorportalid').slideUp();
@@ -212,6 +209,11 @@
                               });
                 }
 
+                var addNewItem = function() {
+                    clearModal();
+                    $('#idownerselect').remove();
+                }
+
                 var deleteRow = function (row) {
                     $.getJSON("/rest/item/delete?id=" + row,
                               function (Data) {
@@ -271,7 +273,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group" id="finderselect">
                                     <label class="col-lg-3 col-md-3 col-sm-3 control-label"
                                            for="finderselect">Finder</label>
 
@@ -287,7 +289,7 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group" id="idownerselect">
                                     <label class="col-lg-3 col-md-3 col-sm-3 control-label"
                                            for="ownerselect">Owner</label>
 
@@ -497,8 +499,7 @@
                 <div class="col-lg-1 col-md-1 col-sm-1 "></div>
                 <div class="form-group col-lg-2 col-md-2 col-sm-2 wow bounceInDown animated">
                     <a href="#mymodal" class="btn btn-success btn-block btn-sm"
-                       data-toggle="modal" id="modalWindowItemForm">Add new
-                        Item</a>
+                       data-toggle="modal" id="modalWindowItemForm">Add new Item</a>
                 </div>
                 <div class="form-group col-lg-2 col-md-2 col-sm-2 wow bounceInDown animated">
                     <a href="#add_new_user_modal" class="btn btn-success btn-block btn-sm"
