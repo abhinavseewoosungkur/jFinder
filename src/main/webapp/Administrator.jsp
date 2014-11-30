@@ -96,10 +96,8 @@
             <script type="text/javascript">
 
                 var filterResult = function (inputName) {
-                    console.log(inputName);
                     var inputValue = $('[name=' + inputName
                                        + ']').filter('input').val();
-                    console.log("/rest/item/getBy?" + inputName + "=" + inputValue);
                     if (inputValue.length == 0) {
                         $("#info2").empty();
                         $('#administratorportalid').slideDown();
@@ -125,7 +123,8 @@
                                             '<td>' + finderName + '</td>' +
                                             '<td>' + ownerName + '</td>' +
                                             '<td>' + val.description + '</td>' +
-                                            '<td>' + val.datefound + '</td>' +
+                                            '<td>' + val.location + '</td>' +
+                                            '<td>' + dateFormatter(val.datefound) + '</td>' +
                                             '<td><a href="#" class="btn btn-success btn-sm" name="update_button" value="update" onclick="fillModal('
                                             + val.iditem
                                             + ');"><div id="updateButtonText'
@@ -144,10 +143,10 @@
                 }
 
                 var fillModal = function (row) {
-                    console.log('#updateButtonText' + row);
                     $('#updateButtonText' + row).text("Loading ...");
                     $.getJSON("/rest/item/getBy?itemfinderbyid=" + row,
                               function (Data) {
+                                  console.log(Data.finder.iduser);
                                   $('#iditem').val(row);
                                   $('#idDescription').val(Data.description);
                                   $('#idLocationFound').val(Data.location);
@@ -156,6 +155,8 @@
 
                                   $('#modalWindowItemForm').trigger('click');
                                   $('#updateButtonText' + row).text("Update");
+                                  $('#finderselectdefaultvalue').val(Data.finder.iduser);
+                                  $('#ownerselectdefaultvalue').val(Data.owner.iduser);
                               });
                 }
 
@@ -170,13 +171,10 @@
                     month = month + '';
 
                     if(month.length == 1) {
-                        console.log('length is one');
                         month = '0' + month;
                     }
-                    console.log('month=' + month);
                     var day = new Date(date).getDate();
                     day = day + '';
-                    console.log('day=' + day);
                     if(day.length == 1) {
                         day = '0' + day;
                     }
@@ -197,7 +195,6 @@
                 var deleteRow = function (row) {
                     $.getJSON("/rest/item/delete?id=" + row,
                               function (Data) {
-                                  console.log(Data);
                                   if(Data == 1) {
                                       $('#itemid'+row).parent().parent().empty();
                                   }
@@ -260,8 +257,8 @@
                                     <div class="col-lg-9 col-md-9 col-sm-9">
                                         <form:select path="finder"
                                                      cssStyle="background: #000000"
-                                                     name="finderselect">
-                                            <form:option value="" label="-- Choose one--" />
+                                                     name="finderselect" id="finderselectdefaultvalue">
+                                            <form:option value="" label="-- Choose one--"  />
                                             <form:options items="${userList}"
                                                           itemValue="iduser"
                                                           itemLabel="name"/>
@@ -276,7 +273,7 @@
                                     <div class="col-lg-9 col-md-9 col-sm-9">
                                         <form:select path="owner"
                                                      cssStyle="background: #000000"
-                                                     name="ownerselect">
+                                                     name="ownerselect" id="ownerselectdefaultvalue">
                                             <form:option value="" label="-- Choose one--" />
                                             <form:options items="${userList}"
                                                           itemValue="iduser"
@@ -438,6 +435,7 @@
                             <th>Finder</th>
                             <th>Owner</th>
                             <th>Description</th>
+                            <th>Location</th>
                             <th>Date</th>
                             <th></th>
                         </tr>
