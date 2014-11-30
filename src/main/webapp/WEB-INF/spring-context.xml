@@ -28,7 +28,7 @@
     <!-- Resolve view name into jsp file located on /WEB-INF -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/" />
-        <property name="suffix" value=".jsp" />
+        <property name="suffix" value="" />
     </bean>
 
     <!-- MySQL Datasource with Commons DBCP connection pooling -->
