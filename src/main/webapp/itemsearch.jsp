@@ -142,7 +142,7 @@
                         <div class="div-trans text-center itemlog2 media wow rotateIn animated animated"
                              data-wow-delay="0.5s"
                              style="visibility: visible; -webkit-animation: rotateIn 0.5s;">
-                            <h3 id="parag">SEARCH ITEMssss</h3>
+                            <h3 id="parag">SEARCH ITEM</h3>
 
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <div class="form-group">
