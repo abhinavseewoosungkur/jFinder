@@ -22,8 +22,4 @@ public class AdminController {
     return "redirect:/";
   }
 
-/*  @RequestMapping(value = "hehe", method = RequestMethod.GET)
-  public void hehe() {
-    adminService.getAll();
-  }*/
 }
