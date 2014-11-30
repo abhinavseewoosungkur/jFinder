@@ -76,7 +76,7 @@
         <div class="navbar-collapse collapse move-me">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="itemSearch.php">HOME
+                    <a href="#">HOME
                     </a>
                 </li>
                 <li>

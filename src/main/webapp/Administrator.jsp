@@ -45,20 +45,20 @@
 <div class="navbar navbar-default navbar-fixed-top move-me ">
     <div class="container">
         <div class="navbar-header" id="text">
-            <a class="navbar-brand " href="index.php">IFinder!</a>
+            <a class="navbar-brand " href="#">IFinder!</a>
         </div>
         <div class="navbar-collapse collapse move-me">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="adminHome.php">HOME
+                    <a href="#">HOME
                     </a>
                 </li>
                 <li>
-                    <a href="ItemLogger.php">LOG ITEM
+                    <a href="#">LOG ITEM
                     </a>
                 </li>
                 <li>
-                    <a href="Administrator.php">INVENTORY LOOKUP
+                    <a href="/Administrator">INVENTORY LOOKUP
                     </a>
                 </li>
                 <ul class="nav navbar-nav pull-right">
@@ -74,7 +74,7 @@
                                     Settings</a>
                             </li>
                             <li>
-                                <a href="logout.php"><span
+                                <a href="/logout"><span
                                         class="glyphicon glyphicon-off"></span>Sign
                                     out</a>
                             </li>
@@ -188,26 +188,6 @@
                     $('input').val("");
                 }
 
-                var setOwner = function (row) {
-                    console.log('set owner');
-                    //$('#updateButtonText' + row).text("Loading ...");
-                    $.getJSON("api/itemfinder.php?itemfinderbyid=" + row,
-                              function (Data) {
-
-                                  $('#idaction').val("set_owner_from_admin");
-                                  $('#iditem').val(row);
-                                  //$('#idhumberid').val(Data.humberid);
-                                  //$('#idname').val(Data.name);
-                                  //$('#idEmailAddress').val(Data.email);
-                                  $('#idDescription').val(Data.description);
-                                  $('#idLocationFound').val(Data.location);
-                                  $('#idDateFound').val(Data.datefound);
-                                  $('#idfinderid').val(Data.finderid);
-
-                                  $('#modalWindowItemForm').trigger('click');
-                                  //$('#updateButtonText' + row).text("Update");
-                              });
-                }
 
                 var addNewItem = function() {
                     clearModal();
@@ -411,32 +391,6 @@
                     </div>
                 </div>
             </div>
-
-            <script type="text/javascript">
-
-
-                function modalWindowSlideIn() {
-                    var php_var = "<?php echo (empty($invalidObj)); ?>";
-                    if (!php_var) {
-                        document.getElementById("mymodal").className =
-                        "modal fade in";
-                        document.getElementById("mymodal").style.display =
-                        "block";
-                        document.getElementById("mymodal").setAttribute("aria-hidden",
-                                                                        "false");
-
-                    }
-                }
-
-                function modalWindowSlideOut() {
-                    document.getElementById("mymodal").style.display = "none";
-                    document.getElementById("mymodal").setAttribute("aria-hidden",
-                                                                    "true");
-                    document.getElementById("mymodal").className = "modal fade";
-                }
-
-
-            </script>
 
             <div class="row text-center" id="administratorportalid">
                 <h2 id="adminline" data-wow-delay="1.3s"
