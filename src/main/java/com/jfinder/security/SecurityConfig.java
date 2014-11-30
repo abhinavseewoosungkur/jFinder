@@ -7,6 +7,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import javax.sql.DataSource;
+
 /**
  * Created by Abhinav on 11/29/2014.
  */
@@ -15,9 +17,24 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired
+  DataSource dataSource;
+
+  @Autowired
+  public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+
+    auth.jdbcAuthentication().dataSource(dataSource)
+        .usersByUsernameQuery(
+            "select username,password, enabled from login where username=?")
+        .authoritiesByUsernameQuery(
+            "select username, role from user_roles where username=?");
+  }
+
+/*  @Autowired
   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
     auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
-  }
+  }*/
+
+
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
