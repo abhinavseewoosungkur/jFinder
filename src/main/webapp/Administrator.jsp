@@ -50,13 +50,10 @@
         <div class="navbar-collapse collapse move-me">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#">HOME
+                    <a href="/login">HOME
                     </a>
                 </li>
-                <li>
-                    <a href="#">LOG ITEM
-                    </a>
-                </li>
+
                 <li>
                     <a href="/Administrator">INVENTORY LOOKUP
                     </a>

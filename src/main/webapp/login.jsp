@@ -42,10 +42,6 @@
           </a>
         </li>
         <li>
-          <a href="#">LOG ITEM
-          </a>
-        </li>
-        <li>
           <a href="#">INVENTORY LOOKUP
           </a>
         </li>
@@ -120,7 +116,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 col-md-12">
-        © 2014 IFinder
+        &copy; 2014 IFinder
 
       </div>
     </div>
