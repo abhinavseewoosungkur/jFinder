@@ -1,8 +1,6 @@
 package com.jfinder.model;
 
-/**
- * Created by Abhinav on 11/23/2014.
- */
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
