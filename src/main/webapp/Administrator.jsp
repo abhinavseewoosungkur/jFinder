@@ -1,9 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Abhinav
-  Date: 11/23/2014
-  Time: 9:24 PM
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
@@ -50,7 +44,7 @@
         <div class="navbar-collapse collapse move-me">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/login">HOME
+                    <a href="/">HOME
                     </a>
                 </li>
 
@@ -97,7 +91,7 @@
                                        + ']').filter('input').val();
                     if (inputValue.length == 0) {
                         $("#info2").empty();
-                        $('#administratorportalid').slideDown();
+                        //$('#administratorportalid').slideDown();
                     } else {
                         $.getJSON("/rest/item/getBy?" + inputName + "="
                                   + inputValue,
@@ -132,7 +126,7 @@
                                             + ');">Delete</a>' +
                                             '</td></tr>'
                                           ).appendTo("#info2");
-                                          $('#administratorportalid').slideUp();
+                                          //$('#administratorportalid').slideUp();
                                       });
 
                                   });
