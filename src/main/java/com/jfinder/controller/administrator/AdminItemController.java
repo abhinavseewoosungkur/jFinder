@@ -17,9 +17,6 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import java.util.List;
 
-/**
- * Created by Abhinav on 11/24/2014.
- */
 @Controller
 @RequestMapping("/Administrator")
 @SessionAttributes("administratorSession")

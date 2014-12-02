@@ -224,7 +224,7 @@
                                                class="form-control"
                                                required="required"
                                                placeholder="Item Description"
-                                               id="idDescription">
+                                               id="idDescription" required>
                                     </div>
                                 </div>
 
@@ -237,7 +237,7 @@
                                         <input class="form-control"
                                                id="idLocationFound"
                                                placeholder="Location found"
-                                               name="location">
+                                               name="location" required>
                                     </div>
                                 </div>
 
@@ -283,7 +283,7 @@
                                                class="form-control"
                                                required="required"
                                                placeholder="Time Stamp"
-                                               id="idDateFound">
+                                               id="idDateFound" required>
 
                                     </div>
                                 </div>
@@ -330,8 +330,8 @@
                                                name="humberid"
                                                class="form-control"
                                                required="required"
-                                               placeholder="Humber ID"
-                                               id="idhumberid">
+                                               placeholder="nXXXXXXXX"
+                                               id="idhumberid" required pattern="n[0-9]{8}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -343,7 +343,7 @@
                                                name="name"
                                                class="form-control"
                                                required="required"
-                                               placeholder="Name" id="idname">
+                                               placeholder="Name" id="idname" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -352,12 +352,12 @@
                                         Address</label>
 
                                     <div class="col-lg-9 col-md-9 col-sm-9">
-                                        <input type="text"
+                                        <input type="email"
                                                name="email"
                                                class="form-control"
                                                required="required"
                                                placeholder="Email Address"
-                                               id="idEmailAddress">
+                                               id="idEmailAddress" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
